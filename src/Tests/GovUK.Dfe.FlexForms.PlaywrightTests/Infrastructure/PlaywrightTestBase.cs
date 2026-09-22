@@ -14,6 +14,12 @@ namespace GovUK.Dfe.FlexForms.PlaywrightTests.Infrastructure;
 /// [OneTimeSetUp], which is the closest equivalent given that NUnit runs many fixtures
 /// concurrently within one process rather than one test file per worker.
 /// </summary>
+/// <remarks>
+/// The [Category] here is inherited by every derived fixture. This project is part of
+/// GovUK.Dfe.FlexForms.Web.sln (for IDE convenience only); dotnet-ci.yml's solution-wide
+/// `dotnet test` excludes TestCategory=Playwright so it doesn't try to launch a browser there.
+/// </remarks>
+[Category("Playwright")]
 public abstract class PlaywrightTestBase : PageTest
 {
     private string _artifactsDirectory = null!;
